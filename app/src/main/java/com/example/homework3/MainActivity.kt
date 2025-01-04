@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
     private fun observeViewModel() {
         viewModel.state.observe(this) {
             binding.progressBarLoading.visibility = View.GONE
-            when(it) {
+            when (it) {
                 is Error -> {
                     Toast.makeText(
                         this@MainActivity,
@@ -49,9 +49,11 @@ class MainActivity : AppCompatActivity() {
                         Toast.LENGTH_SHORT
                     ).show()
                 }
+
                 is Progress -> {
                     binding.progressBarLoading.visibility = View.VISIBLE
                 }
+
                 is Factorial -> {
                     binding.textViewNumber.text = it.value.toString()
                     Toast.makeText(
